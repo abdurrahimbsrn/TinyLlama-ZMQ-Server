@@ -1,40 +1,40 @@
 # TinyLlama-ZMQ-Server
 
-TinyLlama modelini Docker container'ında ZeroMQ arayüzüyle sunan hafif bir sunucu uygulaması.
+A lightweight server application that serves the TinyLlama model in a Docker container with ZeroMQ interface.
 
 ![Docker](https://img.shields.io/badge/Docker-✓-blue?logo=docker)
 ![ZeroMQ](https://img.shields.io/badge/ZeroMQ-✓-green?logo=zeromq)
 ![TinyLlama](https://img.shields.io/badge/TinyLlama-1.1B-ff69b4)
 
-## Özellikler
+## Features
 
-- 🐳 Docker container desteği
-- ⚡ ZeroMQ ile yüksek performanslı mesajlaşma
-- 🤖 TinyLlama-1.1B-Chat model entegrasyonu
-- 🔌 JSON tabanlı API arayüzü
-- 📊 Sistem kaynak kullanım optimizasyonu
+- 🐳 Docker container support
+- ⚡ High-performance messaging with ZeroMQ
+- 🤖 TinyLlama-1.1B-Chat model integration
+- 🔌 JSON-based API interface
+- 📊 System resource optimization
 
-## Kurulum
+## Installation
 
-### 1. Docker ile Çalıştırma
+### 1. Run with Docker
 
 ```bash
 docker build -t tinyllama-server .
 docker run -p 5555:5555 --gpus all tinyllama-server
 ```
 
-### 2. Manuel Kurulum
+### 2. Manual Installation
 
 ```bash
-git clone https://github.com/sizin-kullanici-adi/tinyllama-zmq-server.git
+git clone https://github.com/your-username/tinyllama-zmq-server.git
 cd tinyllama-zmq-server
 pip install -r requirements.txt
 python server.py
 ```
 
-## Kullanım
+## Usage
 
-### İstemci Örneği (Python)
+### Client Example (Python)
 
 ```python
 import zmq
@@ -47,11 +47,11 @@ socket.connect("tcp://localhost:5555")
 messages = [
     {
         "role": "system",
-        "content": "Sen eğlenceli bir korsan asistansın. Kısa ve net cevaplar ver."
+        "content": "You are a funny pirate assistant. Give short and clear answers."
     },
     {   
         "role": "user", 
-        "content": "Deniz neden tuzludur?"
+        "content": "Why is the sea salty?"
     }
 ]
 
@@ -65,50 +65,50 @@ response = json.loads(socket.recv_string())
 print(response["response"])
 ```
 
-### API Formatı
+### API Format
 
-**İstek:**
+**Request:**
 ```json
 {
     "messages": [
-        {"role": "system", "content": "Sistem mesajı"},
-        {"role": "user", "content": "Kullanıcı sorusu"}
+        {"role": "system", "content": "System message"},
+        {"role": "user", "content": "User question"}
     ],
     "max_tokens": 60
 }
 ```
 
-**Yanıt:**
+**Response:**
 ```json
 {
-    "response": "Model yanıtı",
+    "response": "Model response",
     "tokens_used": 42,
     "status": "success"
 }
 ```
 
-## Yapılandırma
+## Configuration
 
-Çevre değişkenleri:
+Environment variables:
 
-| Değişken       | Varsayılan Değer               | Açıklama                     |
-|----------------|-------------------------------|-----------------------------|
-| `MODEL_PATH`   | `TinyLlama/TinyLlama-1.1B-Chat-v1.0` | Model yolu                 |
-| `ZMQ_PORT`     | `5555`                        | ZeroMQ bağlantı portu       |
-| `MAX_TOKENS`   | `100`                         | Maksimum token sayısı       |
+| Variable       | Default Value               | Description                  |
+|----------------|-----------------------------|------------------------------|
+| `MODEL_PATH`   | `TinyLlama/TinyLlama-1.1B-Chat-v1.0` | Model path          |
+| `ZMQ_PORT`     | `5555`                      | ZeroMQ connection port       |
+| `MAX_TOKENS`   | `100`                       | Maximum token count          |
 
-## Katkıda Bulunma
+## Contributing
 
-1. Forklayın (`https://github.com/sizin-kullanici-adi/tinyllama-zmq-server/fork`)
-2. Yeni branch oluşturun (`git checkout -b feature/fooBar`)
-3. Değişikliklerinizi commit edin (`git commit -am 'Add some fooBar'`)
-4. Push yapın (`git push origin feature/fooBar`)
-5. Pull Request oluşturun
+1. Fork it (https://github.com/your-username/TinyLlama-ZMQ-Server/fork)
+2. Create your feature branch (`git checkout -b feature/fooBar`)
+3. Commit your changes (`git commit -am 'Add some fooBar'`)
+4. Push to the branch (`git push origin feature/fooBar`)
+5. Create a new Pull Request
 
-## Lisans
+## License
 
-Apache License 2.0 - Bkz. [LICENSE](LICENSE) dosyası
+Apache License 2.0 - See [LICENSE](LICENSE) file
 
 ---
 
-> **Not:** TinyLlama modeli bazen tutarsız cevaplar üretebilir. Daha stabil sonuçlar için sistem prompt'unuzu optimize edin.
+> **Note:** TinyLlama may sometimes produce inconsistent answers. Optimize your system prompt for more stable results.
