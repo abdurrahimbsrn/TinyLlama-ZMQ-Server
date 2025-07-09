@@ -97,9 +97,6 @@ Environment variables:
 | `ZMQ_PORT`     | `5555`                      | ZeroMQ connection port       |
 | `MAX_TOKENS`   | `100`                       | Maximum token count          |
 
-## Docker Build and Run
-docker build -t tinyllama .
-docker run --rm --gpus all -p 5555:5555 tinyllama
 
 ## Contributing
 
