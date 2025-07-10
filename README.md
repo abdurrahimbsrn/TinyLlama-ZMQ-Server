@@ -47,16 +47,16 @@ socket.connect("tcp://localhost:5555")
 messages = [
     {
         "role": "system",
-        "content": "You are a funny pirate assistant. Give short and clear answers."
+        "content": "You are a helpful assistant that provides concise and accurate answers.",
     },
-    {   
-        "role": "user", 
-        "content": "Why is the sea salty?"
+    {
+        "role": "user",
+        "content": "Who are you?"
     }
 ]
 
 payload = {
-    "messages": messages,
+    "prompt": messages,
     "max_tokens": 60
 }
 
